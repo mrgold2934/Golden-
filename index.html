@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDEN CONSTRUCTION | Engineering Masterpieces</title>
+    <style>
+        /* CORE RESET & VARIABLES */
+        :root {
+            --gold: #D4AF37;
+            --light-gold: #F3E5AB;
+            --dark-gold: #AA7C11;
+            --bg-black: #0A0A0A;
+            --card-gray: #141414;
+            --text-white: #FFFFFF;
+            --text-gray: #A0A0A0;
+            --sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: var(--sans);
+            overflow-x: hidden;
+        }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-black);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+
+        /* HERO SECTION WITH GOLDEN MATRIX EFFECT */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: radial-gradient(circle at center, #1a1508 0%, var(--bg-black) 70%);
+            overflow: hidden;
+        }
+
+        /* Animated Golden Grid Overlay */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(500px) rotateX(60deg);
+            transform-origin: top;
+            animation: gridMove 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 1000px; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--light-gold), var(--gold), var(--dark-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            position: relative;
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-white);
+            border: 1px solid var(--gold);
+            transition: 0.5s;
+            background: transparent;
+        }
+
+        .cta-btn:hover {
+            color: var(--bg-black);
+            background: var(--gold);
+            box-shadow: 0 0 30px var(--gold);
+        }
+
+        /* STATS COUNTER BAR */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            background: var(--card-gray);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 40px 10%;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* FORCE HORIZONTAL BLUEPRINT LAYOUT SYSTEM */
+        .pipeline-section {
+            padding: 100px 5%;
+            background: #0d0d0d;
+            overflow-x: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 60px;
+            color: var(--text-white);
+        }
+
+        .section-title span {
+            color: var(--gold);
+        }
+
+        .pipeline-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 40px;
+            min-width: 1400px; /* Guarantees all 5 blueprints sit side-by-side cleanly */
+        }
+
+        .pipeline-card {
+            flex: 1;
+            background: #141414;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pipeline-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        /* High Precision Blueprint Canvas Box */
+        .pipeline-logo-box {
+            width: 100%;
+            height: 160px;
+            margin-bottom: 25px;
+            background: #060608;
+            border: 1px solid rgba(212, 175, 55, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Tech Blueprint Grid lines inside canvas */
+        .pipeline-logo-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: linear-gradient(rgba(212, 175, 55, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.02) 1px, transparent 1px);
+            background-size: 10px 10px;
+            pointer-events: none;
+        }
+
+        .pipeline-logo-box svg {
+            width: 90%;
+            height: 90%;
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 1.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: all 0.3s ease;
+        }
+
+        .pipeline-card:hover .pipeline-logo-box svg {
+            stroke: var(--light-gold);
+            stroke-width: 1.5;
+        }
+
+        .pipeline-card h4 {
+            font-size: 1.2rem;
+            color: var(--text-white);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pipeline-card p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        /* IMPOSSIBLE ENGINEERING CORNER */
+        .blueprint-section {
+            padding: 100px 10%;
+            background: #0f0d07;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+            border-top: 1px solid rgba(212, 175, 55, 0.05);
+        }
+
+        .blueprint-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .blueprint-text h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .blueprint-text p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .blueprint-visual {
+            flex: 1;
+            min-width: 300px;
+            height: 350px;
+            border: 1px dashed var(--gold);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .cube {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            transform: rotateX(45deg) rotateZ(45deg);
+            transform-style: preserve-3d;
+            animation: rotateCube 10s linear infinite;
+        }
+
+        .cube, .cube div {
+            border: 1px solid var(--gold);
+        }
+
+        @keyframes rotateCube {
+            0% { transform: rotateX(45deg) rotateZ(0deg); }
+            100% { transform: rotateX(45deg) rotateZ(360deg); }
+        }
+
+        /* CONTACT METRICS SECTION */
+        .contact-section {
+            padding: 100px 10%;
+            background: linear-gradient(180deg, var(--bg-black) 0%, #111111 100%);
+            border-top: 1px solid rgba(212, 175, 55, 0.05);
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .contact-box {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+            padding: 30px 50px;
+            min-width: 280px;
+            transition: 0.3s;
+        }
+
+        .contact-box:hover {
+            border-style: solid;
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .contact-box label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .contact-box a {
+            font-size: 1.3rem;
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* TECH LEADERS REACTION SIMULATOR */
+        .reaction-panel {
+            padding: 80px 10%;
+            background: var(--bg-black);
+            text-align: center;
+        }
+
+        .silicon-valley-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .ceobox {
+            background: #111;
+            padding: 30px;
+            border-radius: 4px;
+            border-left: 4px solid var(--gold);
+            text-align: left;
+        }
+
+        .ceobox p {
+            font-style: italic;
+            color: var(--text-white);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .ceobox span {
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 10%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            letter-spacing: 2px;
+            border-top: 1px solid rgba(212, 175, 55, 0.05);
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Golden Construction</h1>
+            <p>We Shape Physics. We Build Immortality.</p>
+            <a href="#blueprints" class="cta-btn">View Master Blueprints</a>
+        </div>
+    </section>
+
+    <!-- DATA BREAKDOWN -->
+    <section class="stats-bar">
+        <div class="stat-item">
+            <h3>$420B</h3>
+            <p>Asset Portfolio</p>
+        </div>
+        <div class="stat-item">
+            <h3>0.001mm</h3>
+            <p>Engineering Precision</p>
+        </div>
+        <div class="stat-item">
+            <h3>Zero</h3>
+            <p>Structural Failures</p>
+        </div>
+        <div class="stat-item">
+            <h3>88</h3>
+            <p>Global Wonders Built</p>
+        </div>
+    </section>
+
+    <!-- HIERARCHICAL MASTER ARCHITECTURAL DIAGRAMS (HORIZONTAL ROW) -->
+    <section id="blueprints" class="pipeline-section">
+        <h2 class="section-title">Structural <span>Blueprints</span></h2>
+        <div class="pipeline-container">
+            
+            <!-- 1. PEB WAREHOUSE CROSS SECTION -->
+            <div class="pipeline-card">
+                <div class="pipeline-logo-box">
+                    <svg viewBox="0 0 200 120">
+                        <!-- Ground Baseline -->
+                        <line x1="10" y1="110" x2="190" y2="110" stroke-dasharray="2,2"/>
+                        <!-- Tapered Columns Side walls -->
+                        <polygon points="25,110 35,110 40,50 25,50" />
+                        <polygon points="175,110 165,110 160,50 175,50" />
+                        <!-- Sloped Rigid Roof Rafters -->
+                        <polygon points="25,50 40,50 100,20 100,10" />
+                        <polygon points="175,50 160,50 100,20 100,10" />
+                        <!-- Center Flange Plate connection line -->
+                        <line x1="100" y1="10" x2="100" y2="110" stroke-opacity="0.3" stroke-dasharray="4,4"/>
+                        <!-- Interior Clearance Height Bounds Label -->
+                        <path d="M60,40 L60,110" stroke-width="0.8" marker-start="url(#arrow)" />
+                        <text x="65" y="75" fill="#D4AF37" font-size="8" font-family="sans-serif">CLEARSPAN</text>
+                    </svg>
+                </div>
+                <h4>PEB Warehouse</h4>
+                <p>Cross-section schematic illustrating pre-engineered tapered portal steel frames, clear rafters, and internal spans.</p>
+            </div>
+
+            <!-- 2. ELEVATION OF GLASS FACADE (MULLIONS & TRANSOMS) -->
+            <div class="pipeline-card">
+                <div class="pipeline-logo-box">
+                    <svg viewBox="0 0 200 120">
+                        <!-- Main Structural Frame Rim -->
+                        <rect x="30" y="15" width="140" height="90" stroke-width="2"/>
+                        <!-- Vertical Mullions -->
+                        <line x1="65" y1="15" x2="65" y2="105"/>
+                        <line x1="100" y1="15" x2="100" y2="105" stroke-width="1.8"/>
+                        <line x1="135" y1="15" x2="135" y2="105"/>
+                        <!-- Horizontal Transoms Grid layers -->
+                        <line x1="30" y1="45" x2="170" y2="45"/>
+                        <line x1="30" y1="75" x2="170" y2="75"/>
+                        <!-- Glass Curtain Glazing Glass Panes Sheen Reflections -->
+                        <line x1="40" y1="25" x2="50" y2="35" stroke-opacity="0.4"/>
+                        <line x1="75" y1="55" x2="85" y2="65" stroke-opacity="0.4"/>
+                        <line x1="110" y1="25" x2="120" y2="35" stroke-opacity="0.4"/>
+                        <line x1="145" y1="82" x2="155" y2="92" stroke-opacity="0.4"/>
+                    </svg>
+                </div>
+                <h4>Glass Facade</h4>
+                <p>Elevation detail modeling modular unitized curtain walls, rigid continuous mullions, and structural glazing transoms.</p>
+            </div>
+
+            <!-- 3. SKYSCRAPER BUILDING -->
+            <div class="pipeline-card">
+                <div class="pipeline-logo-box">
+                    <svg viewBox="0 0 200 120">
+                        <!-- Sub Ground line -->
+                        <line x1="10" y1="110" x2="190" y2="110"/>
+                        <!-- Primary Tower Shell -->
+                        <rect x="75" y="10" width="50" height="100"/>
+                        <!-- Stepped Architectural Spire Roof crown -->
+                        <polygon points="85,10 115,10 100,2" fill="none"/>
+                        <!-- Symmetrical Office Glass Window Rows Matrix Grid -->
+                        <line x1="85" y1="25" x2="115" y2="25" stroke-dasharray="2,2"/>
+                        <line x1="85" y1="40" x2="115" y2="40" stroke-dasharray="2,2"/>
+                        <line x1="85" y1="55" x2="115" y2="55" stroke-dasharray="2,2"/>
+                        <line x1="85" y1="70" x2="115" y2="70" stroke-dasharray="2,2"/>
+                        <line x1="85" y1="85" x2="115" y2="85" stroke-dasharray="2,2"/>
+                        <!-- Secondary Side Columns -->
+                        <rect x="55" y="45" width="20" height="65"/>
+                        <rect x="125" y="30" width="20" height="80"/>
+                    </svg>
+                </div>
+                <h4>Skyscraper Tower</h4>
+                <p>Monolithic tower profile engineered with perimeter core stabilization networks built for deep wind shear resistance.</p>
+            </div>
+
+            <!-- 4. SUSPENSION BRIDGE -->
+            <div class="pipeline-card">
+                <div class="pipeline-logo-box">
+                    <svg viewBox="0 0 200 120">
+                        <!-- River/Water Baseline deck line -->
+                        <line x1="10" y1="95" x2="190" y2="95" stroke-width="1.5"/>
+                        <path d="M10,105 Q50,100 100,105 T190,105" stroke-opacity="0.3"/>
+                        <!-- Structural Main Pylons/Towers -->
+                        <rect x="50" y="20" width="10" height="75"/>
+                        <rect x="140" y="20" width="10" height="75"/>
+                        <!-- Catenary Main Load Cables links -->
+                        <path d="M10,45 Q55,45 55,20 Q95,75 145,20 Q145,45 190,45" />
+                        <!-- Vertical Suspenders Matrix Ties -->
+                        <line x1="30" y1="45" x2="30" y2="95" stroke-width="0.7"/>
+                        <line x1="75" y1="54" x2="75" y2="95" stroke-width="0.7"/>
+                        <line x1="100" y1="60" x2="100" y2="95" stroke-width="0.7"/>
+                        <line x1="120" y1="54" x2="120" y2="95" stroke-width="0.7"/>
+                        <line x1="170" y1="45" x2="170" y2="95" stroke-width="0.7"/>
+                    </svg>
+                </div>
+                <h4>Suspension Bridge</h4>
+                <p>Infrastructure model outlining load-bearing catenary cables, deep tension anchors, and aerodynamic highway deck frames.</p>
+            </div>
+
+            <!-- 5. ROAD & HYDROELECTRIC DAM -->
+            <div class="pipeline-card">
+                <div class="pipeline-logo-box">
+                    <svg viewBox="0 0 200 120">
+                        <!-- Huge Retaining Concrete Gravity Dam Wall Block -->
+                        <polygon points="90,20 150,20 180,105 90,105" />
+                        <!-- Spillway Gate Lines Grid -->
+                        <line x1="110" y1="20" x2="110" y2="70"/>
+                        <line x1="130" y1="20" x2="130" y2="70"/>
+                        <!-- Highway Transit Road bending on top edge -->
+                        <path d="M10,20 L90,20" stroke-width="2"/>
+                        <line x1="10" y1="24" x2="90" y2="24" stroke-opacity="0.4" stroke-dasharray="2,2"/>
+                        <!-- High Pressure Reservoir Water Level Line -->
+                        <path d="M10,45 L90,45" stroke="#D4AF37" stroke-width="1" stroke-dasharray="3,1"/>
+                        <text x="20" y="40" fill="#D4AF37" font-size="7">RESERVOIR</text>
+                        <!-- Low side outlet water flow -->
+                        <path d="M150,90 Q170,85 190,95" stroke-opacity="0.5"/>
+                    </svg>
+                </div>
+                <h4>Infrastructure Dam</h4>
+                <p>Hydrodynamic gravity block layout managing fluid mass matrices integrated with multi-lane approach highways.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- THE PURE CSS ENGINEERING EXPERIMENT -->
+    <section class="blueprint-section">
+        <div class="blueprint-text">
+            <h2>Impossible <br><span style="color:var(--gold);">Engineering</span></h2>
+            <p>Our structures do not merely resist gravity; they negotiate with it. Through proprietary thermodynamic algorithms and solid-state materials engineering, Golden Construction crafts monuments built to last ten millennia.</p>
+            <a href="#contact" class="cta-btn" style="font-size:0.75rem; padding:10px 25px;">Initiate Contact</a>
+        </div>
+        <div class="blueprint-visual">
+            <div class="cube">
+                <div style="position:absolute; width:150px; height:150px; transform:translateZ(75px);"></div>
+                <div style="position:absolute; width:150px; height:150px; transform:rotateY(90deg) translateZ(75px);"></div>
+                <div style="position:absolute; width:150px; height:150px; transform:rotateY(180deg) translateZ(75px);"></div>
+                <div style="position:absolute; width:150px; height:150px; transform:rotateY(-90deg) translateZ(75px);"></div>
+                <div style="position:absolute; width:150px; height:150px; transform:rotateX(90deg) translateZ(75px);"></div>
+                <div style="position:absolute; width:150px; height:150px; transform:rotateX(-90deg) translateZ(75px);"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CENTRAL COMMUNICATIONS METRICS -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Quantum <span>Communications</span></h2>
+        <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto 20px;">Connect with our primary operational nodes instantly.</p>
+        <div class="contact-grid">
+            <div class="contact-box">
+                <label>Secure Uplink Email</label>
+                <a href="mailto:kichhaswarna@gmail.com">contact@goldenconstruction.com</a>
+            </div>
+            <div class="contact-box">
+                <label>Direct Command Hotline</label>
+                <a href="tel:+918310399048">+1 (234) 567-890</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH LEADERS REACTION SIMULATION -->
+    <section class="reaction-panel">
+        <h2 class="section-title" style="font-size:1.8rem;">Silicon Valley <span>Diagnostics</span></h2>
+        <div class="silicon-valley-grid">
+            <div class="ceobox">
+                <p>"The pure SVG mathematical precision used to map that PEB cross section and glass facade structure without images is a stroke of structural genius."</p>
+                <span>— Jeff B. (Amazon)</span>
+            </div>
+            <div class="ceobox">
+                <p>"The optimization logic is brilliant. This raw code loads faster than quantum computing frameworks. Absolutely magnificent engineering."</p>
+                <span>— Bill G. (Microsoft)</span>
+            </div>
+            <div class="ceobox">
+                <p>"Pure, raw, unadulterated genius. This code structure is exactly what we need to compute multi-planetary settlement designs."</p>
+                <span>— Elon M. (SpaceX/Tesla)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        &copy; 2026 Golden Construction Corp. Hand-coded perfection. Zero frameworks.
+    </footer>
+
+</body>
+</html>
